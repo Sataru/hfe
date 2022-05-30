@@ -1,0 +1,55 @@
+p {
+  margin-bottom: 0;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+}
+
+.a,
+.b,
+.c {
+  background-color: #F9F9CE;
+  margin-bottom: 15px;
+  padding: 25px 20px 45px 10px;
+  position: relative;
+}
+
+.a p,
+.b p,
+.c p {
+  position: absolute;
+  bottom: 10px;
+}
+
+.a {
+  border-left: 10px solid #83C2DD;
+}
+
+.b {
+  border-left: 10px solid #032A3D;
+}
+
+.c {
+  border-left: 10px solid #ED9336;
+}
+
+
+
+@media screen and (min-width: 775px) {
+  main {
+    flex-flow: row;
+  }
+
+  .a,
+  .b,
+  .c {
+    width: 33.3%;  
+  }
+  
+  .b,
+  .c {
+    margin-left: 15px;
+  }
+}

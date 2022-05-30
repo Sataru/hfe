@@ -1,0 +1,382 @@
+:root {
+  --red: #ff0000;
+  --bg_dark: #444444;
+  --bg_even-darker: #2c2c2c;
+  --bg_light: #dfdfdf;
+  --bg_light_lighter: #f1f1f1;
+  --bg_shadow-overlay: #000000a3;
+  --gray: #b7b7b7;
+  --pill: #c4eafb;
+}
+
+html {
+  background-color: var(--bg_light);
+  font-size: 10px;
+}
+
+body {
+  background-color: var(--bg_light_lighter);
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 1.5rem;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+.hidden-desktop {
+  display: none;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  display: relative;
+  padding: 0 .5rem;
+}
+
+.logo>svg {
+  height: 5rem;
+}
+
+.logo::after {
+  content: 'news';
+  color: var(--red);
+  display: inline-block;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 4rem;
+  font-style: italic;
+  left: 1rem;
+  position: relative;
+  top: -1rem;
+}
+
+#weatherforecast {
+  color: var(--bg_dark);
+  display: grid;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.5rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 2fr 1fr 1fr;
+  visibility: hidden;
+}
+
+.weatherforecast__location {
+  font-size: 1.5rem;
+  grid-column-start: 3;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  margin-left: .5rem;
+  text-align: center;
+  text-orientation: mixed;
+  writing-mode: vertical-rl;
+}
+
+.weatherforecast__img {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 5rem;
+  margin: 0 auto;
+  width: 5rem;
+}
+
+.weatherforecast__min-max-temp {
+  color: var(--gray);
+  font-size: 1.3rem;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: center;
+}
+
+#weatherforecast__tomorrow,
+#weatherforecast__aftertomorrow {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  font-size: 1rem;
+  line-height: 2.5rem;
+}
+
+#weatherforecast__tomorrow img,
+#weatherforecast__aftertomorrow img {
+  float: left;
+  width: 2.5rem;
+}
+
+#weatherforecast__tomorrow {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  margin-right: 1rem;
+}
+
+#weatherforecast__aftertomorrow {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+main {
+  margin-top: 5rem;
+}
+
+#articles article {
+  cursor: pointer;
+  display: flex;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+#articles article::after {
+  border-bottom: thin solid var(--gray);
+  bottom: -1rem;
+  content: '';
+  display: block;
+  margin: 0 calc(35% / 2);
+  position: absolute;
+  width: 65%;
+}
+
+.article__image {
+  height: 11.2rem;
+  width: 20rem;
+}
+
+.article__details {
+  display: flex;
+  flex-flow: column;
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: .3rem 0 .3rem 1rem;
+  width: calc(100% - 20rem);
+}
+
+.article__title {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.article__synopsis {
+  font-size: 1.4rem;
+}
+
+.article__meta {
+  font-style: italic;
+}
+
+.reloadbutton {
+  margin: 5rem 0 2rem 0;
+  text-align: center;
+}
+
+.article__display--shadow {
+  background-color: var(--bg_shadow-overlay);
+  height: 100vh;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
+}
+
+.article__display {
+  background-color: var(--bg_light);
+  border-radius: .8rem;
+  margin: 10rem auto;
+  max-width: 80rem;
+  padding: 3rem;
+  position: relative;
+  text-align: justify;
+}
+
+.article-content__image {
+  width: 100%;
+}
+
+.article-content__title {
+  font-size: 3rem;
+  display: inline-block;
+  line-height: 3.5rem;
+  margin: 2rem 0;
+}
+
+.article-content__branding {
+  background-color: var(--gray);
+  border-radius: 0.4rem;
+  padding: 0.3rem;
+  margin-right: 0.5rem;
+  color: var(--bg_dark);
+  font-size: 1.2rem;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.article-content__meta {
+  font-size: 1.7rem;
+}
+
+.article-content__author {
+  margin-right: .5rem;
+}
+
+.article-content__intro,
+.article-content__content {
+  font-size: 1.9rem;
+}
+
+.article__close {
+  box-sizing: border-box;
+  position: absolute;
+  transform: scale(1.2);
+  width: 22px;
+  height: 22px;
+  right: -3rem;
+  top: -2rem;
+}
+
+.article__close::after,
+.article__close::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+  transform: rotate(45deg);
+  border-radius: 5px;
+  top: 8px;
+  left: 1px
+}
+
+.article__close::after {
+  transform: rotate(-45deg)
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: var(--bg_even-darker);
+  }
+
+  body {
+    background-color: var(--bg_dark);
+    color: var(--bg_light);
+  }
+
+  .logo>svg {
+    fill: var(--bg_light);
+  }
+
+  #weatherforecast {
+    color: var(--bg_light);
+  }
+
+  .article__display {
+    background-color: var(--bg_dark);
+  }
+
+  .article__display--shadow {
+    background-color: var(--bg_shadow-overlay);
+  }
+}
+
+
+@media screen and (max-width: 39rem) {
+  .hidden-desktop {
+    display: inherit;
+  }
+
+  header {
+    flex-flow: column;
+  }
+
+  #weatherforecast {
+    grid-template-columns: .5fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr .5fr;
+    visibility: hidden;
+  }
+
+  .weatherforecast__location {
+    grid-column-end: 2;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    margin: 0 0 0 1.5rem;
+    text-orientation: inherit;
+    transform: rotate(-90deg);
+    writing-mode: inherit;
+  }
+
+  .weatherforecast__img {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+
+  .weatherforecast__min-max-temp {
+    font-size: 1.5rem;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+
+  #weatherforecast__tomorrow,
+  #weatherforecast__aftertomorrow {
+    align-self: center;
+    display: flex;
+    flex-flow: column;
+    font-size: 1.4rem;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    justify-self: center;
+  }
+
+  #weatherforecast__tomorrow img, 
+  #weatherforecast__aftertomorrow img {
+    width: 3.5rem;
+  }
+
+  #weatherforecast__tomorrow {
+    grid-column-start: 3;
+    grid-column-end: 4;    
+    margin-right: 1rem;
+  }
+
+  #weatherforecast__aftertomorrow {
+    display: flex;
+    flex-flow: column;
+    grid-column-start: 4;
+    grid-column-end: 5;  
+  }
+
+  #articles article {
+    flex-flow: column;
+  }
+
+  .article__image {
+    height: auto;
+    width: auto;  
+  }
+
+  .article__details {
+    width: auto;
+  }
+
+  .article__title {
+    font-size: 1.9rem;
+  }
+
+  .article__synopsis {
+    font-size: 1.6rem;
+  }
+
+  .article__meta {
+    font-size: 1.5rem;
+  }
+
+  .article__close {
+    right: 1rem;
+    top: -3rem;
+  }
+}
